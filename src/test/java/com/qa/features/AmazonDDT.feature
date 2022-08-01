@@ -4,6 +4,16 @@ Feature: validate amazon application using parameterization
     Given the browser is invoked
     Then the url for amazon is entered
 
+  #Singleinput testing
+  @DirectParameter
+  Scenario: Search one item in amazon website
+    Given The user is on amazon home page
+    Then select "Books" as category
+    Then type "Da Vinci Code" in search text field
+    When the maginifier button is clicked
+    Then the items related to search team should be loaded
+    And the browser should be closed
+
   #MultipleInputTesting : step in a scenario will be iterated with several inputs
   @ParameterizeStep
   Scenario: Validate the amazon application for new user registration

@@ -1,0 +1,24 @@
+----------------------------------------
+
+Case study : 1
+---------------
+1. Open the browser (IE / Chrome/ FF / Edge)
+2. Launch Google website "http://www.google.com/"	
+3. Type "Automation Testing" in search text field
+3.1 Fetch all the items displayed in auto suggest dropdown list.
+4. Submit the input
+5. Check if the title of google page has search term
+6. close the browser.
+---------------------------------------------------------------
+
+Create the feature file and write the acceptance criteria 
+	1. Background
+	2. Scenario outline with examples
+	<SearchItem> --> Automation Testing, Performance testing, API testing
+	3. Tags
+Create the step definition with corresponding methods
+Add selenium code and asserts
+Create the test runner using Junit
+Run the test runner
+Execute the test suite from pom.xml file
+Execute the test from CLI and generate cucumber report
