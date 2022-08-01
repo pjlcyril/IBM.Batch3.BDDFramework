@@ -1,0 +1,201 @@
+Test Automation using Selenium - Conventional Model
+How to implement Test automation process for BDD framework
+----------------------------------------------------------
+
+What is BDD framework?
+TDD, ATDD, BDD - Agile Methodologies.
+-----------------------------------------------------------
+
+Conventional approach a product, includes the development team and testing team to work independently.
+
+Ex: 100 days
+
+10 Days for requirements gathering --> 20 days designing -->30 days for Developement ( Units developed --> unit testing --> interation of units to build --> integration testing --> execution of build) --> 30days for Testing (system testing : Functional & non-functional testing) --> Deployment / UAT / Release
+
+* Development plan for WBT is different from the testing plan used for BBT.
+
+While working Agile Model, The Development and testing teams should work collaboratively.
+
+
+1. Agile follows everyday development and every testing : Developer and tester are day before and day behind.
+* What is developed today will be intergated & deployed as build overnight (CICD) and triggered for test execution next day.
+
+2. The development is schedule in fixed iterations (2- 4 weeks)
+
+Ex : 2 Weeks Iteration / sprint --> 14 calendar days
+
+Day1 : Sprint planning
+Day14 : Sprint review and Sprint Reterospection
+4 non-working days
+
+Left behind with 8 days for development
+
+Day 2 : Daily stand up call
+
+** Development plan is based on the testing plan.
+
+
+TDD : Test Driven Development / Test First Approach
+
+Introduced by Kent Beck when extreme programing is designed.
+
+* Development is driven based on the test plan.
+
+First carry out the test execution followed by Developement.
+
+Kent Beck with Eric Gamma --> Junit (Unit testing tool)
+<---------------------------- RED Cycle---------------------------------------->
+User stories --> Unit test cases --> unit test methods --> Execute --> Test failed --> Coding --> executed --> Test passed --> Optimization / Customization
+<----- GREEN Cycle---------------->
+
+* Coding is performed based on the test cases designed early and executed.
+
+
+** The unit test cases identified by the developer during development had a gap between the test cases identified by the QA at the time of system testing and test cases used by the PO a the time of UAT / Sprint review.
+
+To avoid the gap and improve the quality of testing and improve the defect containment process
+
+TDD approach is customized as ATDD approach
+
+                                                                                                                                                                                                                                        
+ATDD approach stands for : Acceptance Test Driven Development.                                        
+
+Common goal : Requriements.
+                                   
+Unit Test & integration test is done by developer
+System test is done by QA
+UAT / Sprint Review is done by PO / BR
+
+
+Product Owner is expected to identify the testable requirement from the user stories that are preferred to executed during UAT / Sprint review.. --> Acceptance Criteria
+
+ATDD :
+-----
+user stories --> acceptance criteria --> unit test methods --> test execution --> test failed --> Coding --> execution --> Test passed                                                                                                                                                                                
+
+Acceptance Criteria --> Written using GHERKINS / JBehave etc..
+
+GHERKINS --> Language used to write the acceptance criteria in Given, When, Then format.
+
+Step by step instruction to repeat the user requirements for positive and negative test condition.
+Template
+
+
+
+Feature: Title of your feature
+  I want to use this template for my feature file
+
+  @tag1
+  Scenario: Title of your scenario
+    Given I want to write a step with precondition
+    	
+    And check more outcomes
+
+  @tag2
+  Scenario Outline: Title of your scenario outline
+    Given I want to write a step with <name>
+    When I check for the <value> in step
+    Then I verify the <status> in step
+
+    Examples: 
+      | name  | value | status  |
+      | name1 |     5 | success |
+      | name2 |     7 | Fail    |
+
+
+
+Acceptance criteria acts as a common deliverable between the developers, QA & PO
+
+
+
+Developers use them to develop the code
+QA use them to system test the application
+PO use them at  UAT / SPRINT review.
+
+
+If the acceptance criteria used by the QA for testing the behaviour of an application -->
+BDD framework
+user stories --> acceptance criteria --> System test methods --> executed --> failed --> Coding (QA : Test code) --> execution --> test passed
+
+BDD is an automated approach to test functionality and behaviour of an application from the front end.
+
+
+s/w Environment:
+
+1. Jdk
+2. Eclipse IDE
+3. Junit & TestNG
+4. Natural / Cucumber plugin
+5. Dependencies --> Cucumber + Selenium + TestNG + GHERKINs etc..
+
+
+Cucumber + Java + Selenium + Junit + TestNG
+
+Work flow of creating a BDD test using Selenium & Cucumber.
+
+
+
+
+
+
+
+
+
+<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+
+<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>2.8.0</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>CAG.BDD.TestAutomation</projectName>
+							<outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+							<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+1. Configuration of BDD cucumber +Selenium + Junit into a maven project
+2. Write the acceptance criteria into a feature file using GHERKINS language
+3. Configure a testrunner class using Junit & Cucumber
+4. Methods into a step definition class using Cucumber
+5. Added selenium code into the methods correspoding to the steps in the acceptance criteria using Selenium 
+6. Trigger test execution from testrunner class using Junit
+7. Configure Json report from Junit
+8. Trigger the test execution from pom.xml file using sure-fire & net.master.cucumber plugin
+9. Trigger the test execution from CLI using mvn clean test
+10. Running the instruction of generate the cucumber HTML report using mvn verify -DskipTests
+11. Walkthrough the customizable CUCumber HTML report
+12. Tags in Cucumber ex: @End2End, & @UITest etc..
+13. How to run the specific tags alone
+14. How to do dryRun
+15. Hooks --> Creating the test fixture using cucumber annotation --> @Before & @After
+
+Pending Topics:
+---------------
+
+1. How to configure TestNG report in cucumber
+2. Parallel execution of scenario
+3. Parameterization in Cucumber --> Single input parameter, Step parameterization & Scenario parameterization using Scenario outline & Examples keyword
+
+
+
+
+
+
+
+
+
+
+
